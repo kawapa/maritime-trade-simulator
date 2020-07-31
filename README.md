@@ -1,1 +1,1 @@
-# maritime-trade-simulator
+# Maritime Trade Simulator
