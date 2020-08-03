@@ -17,7 +17,9 @@ Cargo& Fruit::operator+=(const size_t amount) {
 }
 
 Cargo& Fruit::operator-=(const size_t amount) {
-    amount_ -= amount;
+    if (amount <= amount_) {
+        amount_ -= amount;
+    }
     return *this;
 }
 
