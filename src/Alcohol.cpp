@@ -18,8 +18,7 @@ bool Alcohol::operator==(const Cargo& cargo) const {
     if (typeid(cargo) == typeid(Alcohol)) {
         const Alcohol* alcohol = static_cast<const Alcohol*>(&cargo);
         return (name_ == alcohol->getName()) &&
-               (amount_ == alcohol->getAmount()) &&
-               (basePrice_ == alcohol->getBasePrice());
+               (percentage_ == alcohol->getPercentage());
     }
     return false;
 }
