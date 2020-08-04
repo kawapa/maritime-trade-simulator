@@ -5,13 +5,7 @@ DryFruit::DryFruit(size_t amount, std::string name, size_t basePrice, size_t tim
 
 DryFruit::~DryFruit() { }
 
-double DryFruit::getPrice() const {
-    return 3 * basePrice_;
-}
-
-std::string DryFruit::getName() const {
-    return "";
-}
+double DryFruit::getPrice() const { return 3 * basePrice_; }
 
 bool DryFruit::operator==(const Cargo& cargo) const {
     if (name_ != cargo.getName()) {

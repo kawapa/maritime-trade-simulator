@@ -9,6 +9,7 @@
 class Map {
 public:
     Map();
+    ~Map();
 
     Island* getIsland(const Coordinates& coordinate);
     Island* getCurrentPosition() const;

@@ -8,6 +8,7 @@
 class Player {
 public:
     Player(std::shared_ptr<Ship> ship, size_t money);
+    ~Player();
 
     Ship* getShip() const;
     size_t getMoney() const;

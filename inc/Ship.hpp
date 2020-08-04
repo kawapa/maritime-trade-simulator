@@ -11,6 +11,7 @@ public:
     Ship();
     Ship(int id, const std::string& name, size_t speed, size_t maxCrew, size_t capacity);
     Ship(int id, size_t speed, size_t maxCrew);
+    ~Ship();
 
     size_t getId() const;
     std::string getName() const;

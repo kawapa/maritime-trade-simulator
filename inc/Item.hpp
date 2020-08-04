@@ -14,11 +14,13 @@ public:
     Item(size_t, std::string, size_t, Rarity);
     ~Item() override;
 
+    Rarity getRarity() const;
+
     // Override from Cargo
     double getPrice() const override;
-    std::string getName() const override;
-    size_t getAmount() const override;
-    size_t getBasePrice() const override;
+
+    // Override from Cargo
+    bool operator==(const Cargo& cargo) const override;
 
 private:
     const Rarity rarity_;

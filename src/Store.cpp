@@ -3,7 +3,8 @@
 #include <iostream>
 
 Store::Store() { generateNewStock(); }
-Store::~Store() { }
+
+Store::~Store() = default;
 
 Store::Response Store::buy(Cargo* cargo, size_t amount, Player* player) {
     if (auto search = player->getCargo(cargo->getName())) {

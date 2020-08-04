@@ -3,9 +3,12 @@
 #include <cstddef>
 
 Coordinates::Coordinates(size_t x, size_t y)
-    : positionX_(x), positionY_(y) { }
+    : positionX_(x),
+      positionY_(y) { }
+
+Coordinates::~Coordinates() = default;
 
 bool Coordinates::operator==(const Coordinates& coordinates) {
     return positionX_ == coordinates.positionX_ &&
-        positionY_ == coordinates.positionY_;
+           positionY_ == coordinates.positionY_;
 }

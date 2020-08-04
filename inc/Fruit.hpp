@@ -9,14 +9,9 @@ public:
 
     // Override from Cargo
     virtual double getPrice() const override;
-    virtual std::string getName() const override;
-    virtual size_t getAmount() const override;
-    virtual size_t getBasePrice() const override;
     size_t getTimeToRot() const;
 
     // Override from Cargo
-    virtual Cargo& operator+=(const size_t amount) override;
-    virtual Cargo& operator-=(const size_t amount) override;
     virtual bool operator==(const Cargo& cargo) const override;
 
     virtual Fruit& operator--();

@@ -5,6 +5,7 @@
 class Coordinates {
 public:
     Coordinates(size_t x, size_t y);
+    ~Coordinates();
 
     bool operator==(const Coordinates& coordinates);
 

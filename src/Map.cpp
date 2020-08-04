@@ -32,6 +32,8 @@ Map::Map() {
     }
 }
 
+Map::~Map() = default;
+
 Island* Map::getIsland(const Coordinates& coordinate) {
     auto search = std::find_if(begin(islands_), end(islands_), [&coordinate](const std::shared_ptr<Island>& island){
         return island->getPosition() == coordinate;

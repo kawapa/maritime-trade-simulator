@@ -8,8 +8,8 @@ public:
 
     // Override from Fruit
     virtual double getPrice() const override;
-    virtual std::string getName() const override;
     
+    // Override from Fruit
     bool operator==(const Cargo& cargo) const override;
 
 private:

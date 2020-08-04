@@ -9,15 +9,10 @@ public:
 
     // Override from Cargo
     double getPrice() const override;
-    std::string getName() const override;
-    size_t getAmount() const override;
-    size_t getBasePrice() const override;
-
     size_t getPercentage() const;
 
+    // Override from Cargo
     bool operator==(const Cargo& cargo) const override;
-    Cargo& operator+=(const size_t amount);
-    Cargo& operator-=(const size_t amount);
 
 private:
     const size_t percentage_;

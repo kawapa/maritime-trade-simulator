@@ -8,13 +8,13 @@ public:
     virtual ~Cargo();
 
     virtual double getPrice() const = 0;
-    virtual std::string getName() const = 0;
-    virtual size_t getAmount() const = 0;
-    virtual size_t getBasePrice() const = 0;
+    std::string getName() const;
+    size_t getAmount() const;
+    size_t getBasePrice() const;
     void nextDay();
 
-    virtual Cargo& operator+=(const size_t amount) = 0;
-    virtual Cargo& operator-=(const size_t amount) = 0;
+    virtual Cargo& operator+=(const size_t amount);
+    virtual Cargo& operator-=(const size_t amount);
     virtual bool operator==(const Cargo& cargo) const = 0;
 
 protected:

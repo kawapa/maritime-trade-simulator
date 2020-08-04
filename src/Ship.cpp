@@ -9,10 +9,16 @@
 Ship::Ship() { id_ = -1; }
 
 Ship::Ship(int id, const std::string& name, size_t speed, size_t maxCrew, size_t capacity)
-    : id_(id), name_(name), speed_(speed), maxCrew_(maxCrew), capacity_(capacity) { }
+    : id_(id),
+      name_(name),
+      speed_(speed),
+      maxCrew_(maxCrew),
+      capacity_(capacity) { }
 
 Ship::Ship(int id, size_t speed, size_t maxCrew)
     : Ship(id, "", speed, maxCrew, 0) { }
+
+Ship::~Ship() = default;
 
 size_t Ship::getId() const { return id_; }
 
@@ -44,11 +50,14 @@ size_t Ship::getCargoWeight() const {
 void Ship::load(std::shared_ptr<Cargo> cargo) {
     if (getCargoWeight() + cargo->getAmount() <= getCapacity()) {
         auto search = std::find_if(begin(cargo_), end(cargo_), [&cargo](const std::shared_ptr<Cargo>& c){
-            return c == cargo;
+            return *c == *cargo;
         });
         if (search != end(cargo_)) {
-            search += cargo.get()->getAmount();
+            std::cout << search->get()->getAmount() << std::endl;
+            *(search->get()) += cargo->getAmount();
+            std::cout << search->get()->getAmount() << std::endl;
             std::cout << "Dodaje: " << cargo.get()->getAmount();
+            std::cout << "Search: " << *search << std::endl;
         }
         else {
             cargo_.push_back(cargo);

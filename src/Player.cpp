@@ -3,7 +3,10 @@
 #include <algorithm>
 
 Player::Player(std::shared_ptr<Ship> ship, size_t money)
-    : ship_(ship), money_(money) { }
+    : ship_(ship),
+      money_(money) { }
+
+Player::~Player() = default;
 
 Ship* Player::getShip() const { return ship_.get(); }
 
