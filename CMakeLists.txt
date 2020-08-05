@@ -55,6 +55,7 @@ SET(SRC_LIST_TESTS
     tests/DryFruitTests.cpp
     tests/FruitTests.cpp
     tests/ItemTests.cpp
+    tests/PlayerTests.cpp
 )
 
 include_directories(inc)
