@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <iterator>
 #include <memory>
 #include <vector>
 
@@ -22,8 +23,9 @@ public:
     void setName(const std::string& name);
     Cargo* getCargo(std::string name) const;
     size_t getCargoWeight() const;
+    std::vector<std::shared_ptr<Cargo>>::iterator returnCargoIterator(std::shared_ptr<Cargo> cargo);
     void load(std::shared_ptr<Cargo> cargo);
-    void unload(Cargo* cargo);
+    void unload(std::shared_ptr<Cargo> cargo, size_t amount);
     void removeCargoFromShip(Cargo* cargo);
     void nextDay();
 
@@ -37,6 +39,5 @@ private:
     size_t maxCrew_;
     size_t capacity_;
     size_t crew_;
-public:
     std::vector<std::shared_ptr<Cargo>> cargo_;
 };
