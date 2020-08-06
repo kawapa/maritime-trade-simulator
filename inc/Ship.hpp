@@ -38,6 +38,6 @@ private:
     size_t speed_;
     size_t maxCrew_;
     size_t capacity_;
-    size_t crew_;
+    size_t crew_ = 0;
     std::vector<std::shared_ptr<Cargo>> cargo_;
 };

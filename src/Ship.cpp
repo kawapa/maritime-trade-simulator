@@ -76,7 +76,7 @@ void Ship::unload(Shipment cargo, size_t amount) {
             cargo_.erase(search);
         }
         else {
-            search -= amount;
+            *(search->get()) -= amount;
         }
     }
 }
