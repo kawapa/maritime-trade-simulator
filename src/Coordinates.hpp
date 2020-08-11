@@ -7,7 +7,9 @@ public:
     Coordinates(size_t x, size_t y);
     ~Coordinates();
 
-    bool operator==(const Coordinates& coordinates);
+    static size_t distance(const Coordinates& lhs, const Coordinates& rhs);
+
+    bool operator==(const Coordinates& coordinates) const;
 
 private:
     size_t positionX_;

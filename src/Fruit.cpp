@@ -1,16 +1,22 @@
 #include "Fruit.hpp"
 
-Fruit::Fruit(size_t amount, std::string name, size_t basePrice,
-             size_t timeToRot, size_t shelfLife)
+#include <iostream>
+
+Fruit::Fruit(size_t amount, std::string name, size_t basePrice, size_t timeToRot, size_t shelfLife)
     : Cargo(amount, name, basePrice),
       timeToRot_(timeToRot),
-      shelfLife_(shelfLife) { }
+      shelfLife_(shelfLife) {}
 
-Fruit::~Fruit() { }
+Fruit::~Fruit() {}
 
-double Fruit::getPrice() const { return basePrice_ * (shelfLife_ - timeToRot_); }
+double Fruit::getPrice() const {
+    return basePrice_ * (shelfLife_ - timeToRot_);
+}
 
-size_t Fruit::getTimeToRot() const { return timeToRot_; }
+size_t Fruit::getTimeToRot() const {
+    return timeToRot_;
+}
+
 
 bool Fruit::operator==(const Cargo& cargo) const {
     if (typeid(cargo) == typeid(Fruit)) {
@@ -31,4 +37,10 @@ Fruit Fruit::operator--(int) {
     Fruit tmp(*this);
     operator--();
     return tmp;
+}
+
+std::ostream& operator<<(std::ostream& os, const Fruit& obj) {
+    os << obj.getName() << ", amount: " << obj.getAmount() << ", price: " << obj.getPrice()
+       << ", days to spoil: " << obj.getTimeToRot() << std::endl;
+    return os;
 }

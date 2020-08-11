@@ -22,6 +22,8 @@ public:
     // Override from Cargo
     bool operator==(const Cargo& cargo) const override;
 
+    friend std::ostream& operator<<(std::ostream& os, const Item& obj);
+
 private:
     const Rarity rarity_;
 };

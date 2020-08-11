@@ -1,13 +1,16 @@
 #pragma once
 
+#include <iostream>
+#include <vector>
+
 #include "Cargo.hpp"
 #include "Player.hpp"
 
 class Store {
-public:  
+public:
     Store();
     ~Store();
-    
+
     enum class Response {
         done,
         lack_of_money,
@@ -16,10 +19,12 @@ public:
     };
 
     Response buy(Cargo* cargo, size_t amount, Player* player);
-    // Response sell(Cargo* cargo, size_t amount, Player* player);
-    void nextDay();
+    Response sell(Cargo* cargo, size_t amount, Player* player);
     void generateNewStock();
+    void showAssortment();
+
+    friend std::ostream& operator<<(std::ostream& os, const Store& obj);
 
 private:
-
+    std::vector<std::shared_ptr<Cargo>> cargo_;
 };

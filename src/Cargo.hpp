@@ -11,7 +11,6 @@ public:
     std::string getName() const;
     size_t getAmount() const;
     size_t getBasePrice() const;
-    void nextDay();
 
     virtual Cargo& operator+=(const size_t amount);
     virtual Cargo& operator-=(const size_t amount);

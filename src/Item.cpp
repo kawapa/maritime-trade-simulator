@@ -1,5 +1,7 @@
 #include "Item.hpp"
 
+#include <iostream>
+
 Item::Item(size_t amount, std::string name, size_t basePrice, Rarity rarity)
     : Cargo(amount, name, basePrice),
       rarity_(rarity) { }
@@ -17,4 +19,9 @@ bool Item::operator==(const Cargo& cargo) const {
                rarity_ == item.getRarity();
     }
     return false;
+}
+
+std::ostream& operator<<(std::ostream& os, const Item& obj) {
+        os << obj.getName() << ", amount: " << obj.getAmount() << ", price: " << std::endl;
+        return os;
 }

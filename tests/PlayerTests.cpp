@@ -13,6 +13,7 @@ struct ClassPlayerTestSuite : public ::testing::Test {
 TEST_F(ClassPlayerTestSuite, operatorPlusEquals) {
     player += 10;
     EXPECT_EQ(player.getMoney(), 1010);
+
     player -= 510;
     EXPECT_EQ(player.getMoney(), 500);   
 }
@@ -20,6 +21,7 @@ TEST_F(ClassPlayerTestSuite, operatorPlusEquals) {
 TEST_F(ClassPlayerTestSuite, operatorMinusEquals) {
     player -= 750;
     EXPECT_EQ(player.getMoney(), 250);
+    
     player -= 10;
     EXPECT_EQ(player.getMoney(), 240);  
 }

@@ -1,6 +1,7 @@
 #include "Coordinates.hpp"
 
 #include <cstddef>
+#include <cmath>
 
 Coordinates::Coordinates(size_t x, size_t y)
     : positionX_(x),
@@ -8,7 +9,13 @@ Coordinates::Coordinates(size_t x, size_t y)
 
 Coordinates::~Coordinates() = default;
 
-bool Coordinates::operator==(const Coordinates& coordinates) {
-    return positionX_ == coordinates.positionX_ &&
-           positionY_ == coordinates.positionY_;
+size_t Coordinates::distance(const Coordinates& lhs, const Coordinates& rhs) {
+    int xDiff = lhs.positionX_ - rhs.positionX_;
+    int yDiff = lhs.positionY_ - rhs.positionY_;
+    return std::sqrt(xDiff * xDiff + yDiff * yDiff);
+}
+
+bool Coordinates::operator==(const Coordinates& coordinates) const {
+    return ((positionX_ == coordinates.positionX_) &&
+           (positionY_ == coordinates.positionY_));
 }

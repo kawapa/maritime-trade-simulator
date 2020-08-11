@@ -40,7 +40,7 @@ SET(SRC_LIST
     src/Alcohol.cpp
     src/Cargo.cpp
     src/Coordinates.cpp
-    src/DryFruit.cpp
+    src/Game.cpp
     src/Fruit.cpp
     src/Island.cpp
     src/Item.cpp
@@ -52,14 +52,14 @@ SET(SRC_LIST
 
 SET(SRC_LIST_TESTS
     tests/AlcoholTests.cpp
-    tests/DryFruitTests.cpp
+    tests/CoordinatesTests.cpp
     tests/FruitTests.cpp
     tests/ItemTests.cpp
     tests/PlayerTests.cpp
     tests/ShipTests.cpp
 )
 
-include_directories(inc)
+include_directories(src)
 add_executable(${PROJECT_NAME} src/main.cpp ${SRC_LIST})
 add_executable(${PROJECT_NAME}-ut ${SRC_LIST_TESTS} ${SRC_LIST})
 
