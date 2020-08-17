@@ -5,16 +5,24 @@
 class ClassAlcoholTestSuite : public testing::TestWithParam<std::pair<Alcohol, Alcohol>> {
 };
 
-TEST_P(ClassAlcoholTestSuite, operatorEqualsEquals) {
+TEST(ClassAlcoholTestSuite, operatorEqualsEqualsReturnsFalse) {
+    auto first = Alcohol{"Whisky", 40};
+    auto second = Alcohol{"Wine", 12};
+
+    EXPECT_FALSE(first == second);
+}
+
+TEST_P(ClassAlcoholTestSuite, operatorEqualsEqualsReturnsTrue) {
     auto pair = GetParam();
+    
     EXPECT_TRUE(pair.first == pair.second);
 }
 
 INSTANTIATE_TEST_SUITE_P(MyInstantiationName,
                          ClassAlcoholTestSuite,
                          testing::Values(
-                             std::make_pair(Alcohol{1, "Whisky", 75, 40, 40}, Alcohol{5, "Whisky", 150, 40, 45}),
-                             std::make_pair(Alcohol{2, "Tequila", 10, 44, 45}, Alcohol{16, "Tequila", 195, 44, 50}),
-                             std::make_pair(Alcohol{3, "Bourbon", 95, 42, 40}, Alcohol{6, "Bourbon", 110, 42, 65})
+                             std::make_pair(Alcohol{"Whisky", 40}, Alcohol{"Whisky", 40}),
+                             std::make_pair(Alcohol{"Tequila", 45}, Alcohol{"Tequila", 45}),
+                             std::make_pair(Alcohol{"Bourbon", 50}, Alcohol{"Bourbon", 50})
                          )
 );

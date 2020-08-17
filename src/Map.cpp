@@ -1,13 +1,14 @@
 #include "Map.hpp"
 
 #include <algorithm>
+#include <iostream>
 #include <random>
 
 #include "Coordinates.hpp"
 #include "Island.hpp"
 
 constexpr int minCoordinate = 0;
-constexpr int maxCoordinate = 100;
+constexpr int maxCoordinate = 10;
 constexpr int numberOfIslands = 10;
 
 Map::Map() {
@@ -46,4 +47,8 @@ Island* Map::getIsland(const Coordinates& coordinate) {
 
 Island* Map::getCurrentPosition() const {
     return currentPosition_;
+}
+
+void Map::showIslands() {
+    
 }

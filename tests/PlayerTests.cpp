@@ -1,27 +1,18 @@
 #include <gtest/gtest.h>
 
 #include "Player.hpp"
-#include "Ship.hpp"
+#include "Store.hpp"
 
 #include <memory>
 
 struct ClassPlayerTestSuite : public ::testing::Test {
-    std::shared_ptr<Ship> ship = std::make_shared<Ship>();
-    Player player{ship, 1000};
+    Player player;
+    Store store;
 };
 
-TEST_F(ClassPlayerTestSuite, operatorPlusEquals) {
-    player += 10;
-    EXPECT_EQ(player.getMoney(), 1010);
+TEST_F(ClassPlayerTestSuite, CanBuyFromTheStore) {
+    store.sell(0, 10, &player);
+    auto result = player.getShip()->getCargoWeight();
 
-    player -= 510;
-    EXPECT_EQ(player.getMoney(), 500);   
-}
-
-TEST_F(ClassPlayerTestSuite, operatorMinusEquals) {
-    player -= 750;
-    EXPECT_EQ(player.getMoney(), 250);
-    
-    player -= 10;
-    EXPECT_EQ(player.getMoney(), 240);  
+    EXPECT_EQ(result, 10);
 }

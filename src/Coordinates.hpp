@@ -4,14 +4,15 @@
 
 class Coordinates {
 public:
-    Coordinates(size_t x, size_t y);
+    Coordinates(int x, int y);
     ~Coordinates();
 
-    static size_t distance(const Coordinates& lhs, const Coordinates& rhs);
-
+    void printCoordinates() const;
+    
+    static int distance(const Coordinates& lhs, const Coordinates& rhs);
     bool operator==(const Coordinates& coordinates) const;
 
 private:
-    size_t positionX_;
-    size_t positionY_;
+    int positionX_;
+    int positionY_;
 };

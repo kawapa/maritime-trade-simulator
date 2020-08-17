@@ -2,26 +2,30 @@
 
 #include "Coordinates.hpp"
 
-constexpr size_t X_1 = 10;
-constexpr size_t Y_1 = 15;
-constexpr size_t X_2 = 14;
-constexpr size_t Y_2 = 20;
+#include <tuple>
 
-
-struct ClassCoordinatesTestSuite : public ::testing::Test {
-    Coordinates co1{X_1, Y_1};
-    Coordinates co2{X_2, Y_2};
+struct ClassCoordinatesTestSuite : public testing::TestWithParam<std::tuple<Coordinates, Coordinates, bool, int>> {
 };
 
-TEST_F(ClassCoordinatesTestSuite, methodDistance) {
-    auto expected = Coordinates::distance(co1, co2);
-    ASSERT_EQ(6, expected);
+TEST_P(ClassCoordinatesTestSuite, methodDistance) {
+    auto [first, second, equal, expectedDistance] = GetParam();
+    auto distance = Coordinates::distance(first, second);
     
-    expected = Coordinates::distance(co1, co1);
-    ASSERT_EQ(0, expected);
+    EXPECT_EQ(distance, expectedDistance);
 }
 
-TEST_F(ClassCoordinatesTestSuite, operatorEqualsEquals) {
-    Coordinates temp{X_1, Y_1};
-    ASSERT_TRUE(temp == co1);
+TEST_P(ClassCoordinatesTestSuite, operatorEqualsEquals) {
+    auto [first, second, equal, expectedDistance] = GetParam();
+    
+    EXPECT_EQ(first == second, equal);
 }
+
+INSTANTIATE_TEST_SUITE_P(MyInstantiationName,
+                         ClassCoordinatesTestSuite,
+                         testing::Values(
+                             std::make_tuple(Coordinates{0, 5}, Coordinates{0, 5}, true, 0),
+                             std::make_tuple(Coordinates{1, 6}, Coordinates{4, 10}, false, 7),
+                             std::make_tuple(Coordinates{4, 10}, Coordinates{0, 0}, false, 14),
+                             std::make_tuple(Coordinates{10, 10}, Coordinates{2, 5}, false, 13)
+                         )
+);

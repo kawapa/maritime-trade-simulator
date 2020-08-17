@@ -18,6 +18,7 @@ public:
 
     // Override from Cargo
     double getPrice() const override;
+    virtual std::shared_ptr<Cargo> clone() const;
 
     // Override from Cargo
     bool operator==(const Cargo& cargo) const override;

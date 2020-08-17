@@ -22,6 +22,15 @@ bool Item::operator==(const Cargo& cargo) const {
 }
 
 std::ostream& operator<<(std::ostream& os, const Item& obj) {
-        os << obj.getName() << ", amount: " << obj.getAmount() << ", price: " << std::endl;
+        os << obj.getName() << ", amount: " << obj.getAmount() << ", price: " << obj.getPrice() << std::endl;
         return os;
+}
+
+std::shared_ptr<Cargo> Item::clone() const {
+    auto itemClone = std::make_shared<Item>(
+        this->getAmount(),
+        this->getName(),
+        this->getBasePrice(),
+        this->getRarity());
+    return itemClone;
 }

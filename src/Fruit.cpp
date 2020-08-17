@@ -17,13 +17,27 @@ size_t Fruit::getTimeToRot() const {
     return timeToRot_;
 }
 
+size_t Fruit::getShelfLife() const {
+    return shelfLife_;
+}
 
 bool Fruit::operator==(const Cargo& cargo) const {
     if (typeid(cargo) == typeid(Fruit)) {
         auto fruit = static_cast<const Fruit&>(cargo);
-        return (name_ == fruit.getName() && timeToRot_ == fruit.getTimeToRot());
+        return (name_ == fruit.getName()) &&
+               (timeToRot_ == fruit.getTimeToRot());
     }
     return false;
+}
+
+std::shared_ptr<Cargo> Fruit::clone() const {
+    auto fruitClone = std::make_shared<Fruit>(
+        this->getAmount(),
+        this->getName(),
+        this->getBasePrice(),
+        this->getTimeToRot(),
+        this->getShelfLife());
+    return fruitClone;
 }
 
 Fruit& Fruit::operator--() {

@@ -1,6 +1,14 @@
 #include "Player.hpp"
 
+#include "Fruit.hpp"
+#include "Item.hpp"
+#include "Alcohol.hpp"
+
 #include <algorithm>
+#include <iostream>
+#include <vector>
+
+Player::Player() : Player(std::make_shared<Ship>(), 1000) {}
 
 Player::Player(std::shared_ptr<Ship> ship, size_t money)
     : ship_(ship),
@@ -24,10 +32,6 @@ size_t Player::getSpeed() const {
     return ship_->getSpeed();
 }
 
-Cargo* Player::getCargo(std::string name) const {
-    return getShip()->getCargo(name);
-}
-
 Player& Player::operator+=(const size_t amount) {
     money_ += amount;
     return *this;
@@ -39,3 +43,5 @@ Player& Player::operator-=(const size_t amount) {
     }
     return *this;
 }
+
+void Player::showCargo() { getShip()->printCargo(); }

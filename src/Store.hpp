@@ -18,10 +18,12 @@ public:
         lack_of_space
     };
 
-    Response buy(Cargo* cargo, size_t amount, Player* player);
-    Response sell(Cargo* cargo, size_t amount, Player* player);
+    // Response buy(Cargo* cargo, size_t amount, Player* player);
+    Response sell(size_t index, size_t amount, Player* player);
+    Cargo* getCargo(size_t index);
     void generateNewStock();
     void showAssortment();
+    void removeFromCargo(std::shared_ptr<Cargo> cargo);
 
     friend std::ostream& operator<<(std::ostream& os, const Store& obj);
 

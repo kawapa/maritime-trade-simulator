@@ -7,19 +7,23 @@
 
 class Player {
 public:
-    Player(std::shared_ptr<Ship> ship, size_t money);
+    Player();
+    Player(std::shared_ptr<Ship> ship, double money);
     ~Player();
 
     Ship* getShip() const;
     size_t getMoney() const;
     size_t getAvailableSpace() const;
     size_t getSpeed() const;
-    Cargo* getCargo(std::string name) const;
+
+    void showCargo();
 
     Player& operator+=(const size_t amount);
     Player& operator-=(const size_t amount);
 
+    friend std::ostream& operator<<(std::ostream& os, const Player& obj);
+
 private:
     std::shared_ptr<Ship> ship_;
-    size_t money_;
+    double money_;
 };

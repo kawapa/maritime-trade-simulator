@@ -13,6 +13,7 @@ public:
 
     Island* getIsland(const Coordinates& coordinate);
     Island* getCurrentPosition() const;
+    void showIslands();
 
 private:
     std::vector<std::shared_ptr<Island>> islands_;

@@ -10,11 +10,13 @@ public:
     // Override from Cargo
     virtual double getPrice() const override;
     size_t getTimeToRot() const;
+    size_t getShelfLife() const;
 
     // Override from Cargo
     virtual bool operator==(const Cargo& cargo) const override;
     virtual Fruit& operator--();
     virtual Fruit operator--(int);
+    virtual std::shared_ptr<Cargo> clone() const;
 
     friend std::ostream& operator<<(std::ostream& os, const Fruit& obj);
 

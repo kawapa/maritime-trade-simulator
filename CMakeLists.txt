@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 # Download and unpack googletest at configure time
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
 execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
@@ -54,6 +57,7 @@ SET(SRC_LIST_TESTS
     tests/AlcoholTests.cpp
     tests/CoordinatesTests.cpp
     tests/FruitTests.cpp
+    tests/GameTests.cpp
     tests/ItemTests.cpp
     tests/PlayerTests.cpp
     tests/ShipTests.cpp
