@@ -50,6 +50,8 @@ size_t Ship::getCargoWeight() const {
     return totalCargo;
 }
 
+Cargo* Ship::getCargo(size_t index) { return cargo_[index].get(); }
+
 std::vector<Shipment>::iterator Ship::returnCargoIterator(Shipment cargo) {
     return std::find_if(begin(cargo_), end(cargo_), [&cargo](const Shipment& c) { return *c == *cargo; });
 }

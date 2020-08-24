@@ -8,7 +8,7 @@
 class Player {
 public:
     Player();
-    Player(std::shared_ptr<Ship> ship, double money);
+    Player(std::shared_ptr<Ship> ship, size_t money);
     ~Player();
 
     Ship* getShip() const;
@@ -16,6 +16,8 @@ public:
     size_t getAvailableSpace() const;
     size_t getSpeed() const;
 
+    void buyCargo(std::shared_ptr<Cargo> cargo, size_t price);
+    void sellCargo(std::shared_ptr<Cargo> cargo, size_t amount, size_t price);
     void showCargo();
 
     Player& operator+=(const size_t amount);
@@ -25,5 +27,5 @@ public:
 
 private:
     std::shared_ptr<Ship> ship_;
-    double money_;
+    size_t money_;
 };

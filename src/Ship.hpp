@@ -20,6 +20,7 @@ public:
     size_t getCapacity() const;
 
     void printCargo() const;
+    Cargo* getCargo(size_t index);
 
     size_t getCargoWeight() const;
     void load(std::shared_ptr<Cargo> cargo);

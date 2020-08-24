@@ -1,5 +1,6 @@
 #include "Item.hpp"
 
+#include <cmath>
 #include <iostream>
 
 Item::Item(size_t amount, std::string name, size_t basePrice, Rarity rarity)
@@ -10,7 +11,10 @@ Item::~Item() { }
 
 Item::Rarity Item::getRarity() const { return rarity_; }
 
-double Item::getPrice() const { return basePrice_ * static_cast<int>(rarity_); }
+double Item::getPrice() const {
+    double price = basePrice_ * static_cast<int>(rarity_);
+    return std::ceil(price * 100.0) / 100.0;
+}
 
 bool Item::operator==(const Cargo& cargo) const {
     if (typeid(cargo) == typeid(Item)) {

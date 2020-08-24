@@ -57,7 +57,6 @@ SET(SRC_LIST_TESTS
     tests/AlcoholTests.cpp
     tests/CoordinatesTests.cpp
     tests/FruitTests.cpp
-    tests/GameTests.cpp
     tests/ItemTests.cpp
     tests/PlayerTests.cpp
     tests/ShipTests.cpp

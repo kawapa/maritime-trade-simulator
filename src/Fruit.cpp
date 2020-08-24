@@ -1,5 +1,6 @@
 #include "Fruit.hpp"
 
+#include <cmath>
 #include <iostream>
 
 Fruit::Fruit(size_t amount, std::string name, size_t basePrice, size_t timeToRot, size_t shelfLife)
@@ -10,7 +11,8 @@ Fruit::Fruit(size_t amount, std::string name, size_t basePrice, size_t timeToRot
 Fruit::~Fruit() {}
 
 double Fruit::getPrice() const {
-    return basePrice_ * (shelfLife_ - timeToRot_);
+    double price = basePrice_ * (timeToRot_ / static_cast<double>(shelfLife_));
+    return std::ceil(price * 100.0) / 100.0;
 }
 
 size_t Fruit::getTimeToRot() const {

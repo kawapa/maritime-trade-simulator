@@ -9,31 +9,38 @@
 
 Store::Store() {
     cargo_ = {
-        {std::make_shared<Fruit>(15, "Banana", 15, 10, 10)},
-        {std::make_shared<Fruit>(5, "Apple", 10, 10, 10)},
+        {std::make_shared<Fruit>(15, "Banana", 15, 9, 10)},
+        {std::make_shared<Fruit>(5, "Apple", 10, 8, 10)},
         {std::make_shared<Item>(1, "Sword", 75, Item::Rarity::common)}
     };
 }
 
 Store::~Store() = default;
 
-// Store::Response Store::buy(Cargo* cargo, size_t amount, Player* player) {
-//     if (auto search = player->getCargo(cargo->getName())) {
-//         if (search->getAmount() < amount) {
-//             std::cerr << "You cannot sell more than you have!\n";
-//             return Response::lack_of_cargo;
-//         }
-//         search -= amount;
-//         player += search->getBasePrice() * amount;
+Store::Response Store::buy(size_t index, size_t amount, Player* player) {
+    auto cargo = player->getShip()->getCargo(index);
 
-//         if (search->getAmount() == amount) {
-//             player->getShip()->removeCargoFromShip(search);
-//         } else {
-//             search -= amount;
-//         }
-//     }
-//     return Response::done;
-// }
+    if (amount > cargo->getAmount()) {
+        return Response::lack_of_cargo;
+    }
+
+    auto price = amount * cargo->getPrice();
+    *player -= price;
+    auto newCargo = cargo->clone();
+
+    if (amount == cargo->getAmount()) {
+        player->(cargo_[index]);
+    }
+    else {
+        *cargo_[index] -= amount;
+        *newCargo -= cargo_[index]->getAmount();
+    }
+    player->getShip()->load(std::move(newCargo));
+
+    return Response::done;
+
+
+}
 
 Cargo* Store::getCargo(size_t index) { return cargo_[index].get(); }
 

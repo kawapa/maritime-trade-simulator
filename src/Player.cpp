@@ -45,3 +45,13 @@ Player& Player::operator-=(const size_t amount) {
 }
 
 void Player::showCargo() { getShip()->printCargo(); }
+
+void Player::buyCargo(std::shared_ptr<Cargo> cargo, size_t price) {
+    money_ -= price;
+    getShip()->load(cargo);
+}
+
+void Player::sellCargo(std::shared_ptr<Cargo> cargo, size_t amount, size_t price) {
+    money_ += price;
+    getShip()->unload(cargo, amount);
+}
